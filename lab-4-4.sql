@@ -2,6 +2,14 @@
 -- NOTE: need more advanced SQL to answer this question without
 --       raising a warning: "Field of aggregated query neither grouped nor aggregated"
 
+SELECT teams.name, players.first_name, players.last_name, stats.home_runs
+FROM teams INNER JOIN stats ON teams.id = stats.team_id
+INNER JOIN players ON players.id = stats.player_id
+WHERE teams.year = 2019
+GROUP BY teams.name;
+
+-- currently only show team, name, and home_runs but NOT showing person with the most home runs. need to find person with the most home runs for each team
+
 -- Expected result:
 --
 -- +-------------------------------+------------+-------------+----------------------+
